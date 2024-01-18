@@ -17,6 +17,19 @@ migrations to a SQLite3 database.
   database file and the path to the migration SQL file. 
 
 ## Usage
+Download the latest release version of the binary for your platform from
+the **Releases** area of this repository. Use the binary in your project,
+with the required arguments.
+
+```sh
+# Linux and MacOS
+./migrate -verbose ./db/database.db ./db_migrations/migration.sql
+
+# Windows
+./migratish.exe -verbose ./db/database.db ./db_migrations/migration.sql
+```
+
+## Usage with Compilation
 To use the migration utility, compile the `main.go` file and execute the 
 binary with the required arguments. 
 
@@ -25,13 +38,13 @@ go build -o migrate main.go
 ./migrate path/to/database.db path/to/migration.sql
 ```
 
-The migration file name must follow the pattern `[f|r][1-9]+.sql`, where:
+The migration file name must follow the pattern `[f|r][1-9][0-9]*.sql`, where:
 - `f` indicates a forward migration.
 - `r` indicates a reverse migration.
-- The number sequence (1-9 or higher) represents the migration version. 
+- The number sequence (1-10 or higher) represents the migration version. 
 
 ## Migration Files
-Migration files should be named according to the schema `[f|r][1-9]+.sql`:
+Migration files should be named according to the schema `[f|r][1-9][0-9]*.sql`:
 - `f` for forward migrations.
 - `r` for reverse migrations.
 - A sequence number indicating the migration version.
