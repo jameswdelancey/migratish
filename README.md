@@ -1,6 +1,8 @@
 # SQLite3 Migration CLI Utility
 For Windows, Linux, or Mac
 
+[![Go Build and Release](https://github.com/jameswdelancey/migratish/actions/workflows/build.yml/badge.svg)](https://github.com/jameswdelancey/migratish/actions/workflows/build.yml)
+
 ## Overview
 This repository contains a simple Go-based SQLite3 migration CLI utility 
 designed to manage database migrations. The utility is implemented in a 
