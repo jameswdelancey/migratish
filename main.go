@@ -88,7 +88,7 @@ func main() {
 		// If dbResult is not NULL, use the value
 		dbVersion = int(dbResult.Int64)
 	} else {
-		// If dbResult is NULL, you can set a default value or handle it as needed
+		// If dbResult is NULL, set a default value
 		dbVersion = 0
 	}
 	if *verbose {
@@ -127,7 +127,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Update migration migVersion
+	// Update migration version in DB
 	if direction == 'f' {
 		_, err = tx.Exec("INSERT INTO migrations (migration_version) VALUES (?)", migVersion)
 	} else {
