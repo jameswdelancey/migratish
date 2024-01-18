@@ -65,7 +65,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./migratish-ubuntu-latest
+          asset_path: /home/runner/work/migratish/migratish/migratish-ubuntu-latest
           asset_name: migratish-linux-amd64
           asset_content_type: application/octet-stream
 
@@ -75,7 +75,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./migratish-windows-latest
+          asset_path: /home/runner/work/migratish/migratish/migratish-windows-latest
           asset_name: migratish-windows-amd64.exe
           asset_content_type: application/octet-stream
 
@@ -85,6 +85,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./migratish-macos-latest
+          asset_path: /home/runner/work/migratish/migratish/migratish-macos-latest
           asset_name: migratish-macos-amd64
           asset_content_type: application/octet-stream
