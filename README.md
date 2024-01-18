@@ -76,7 +76,7 @@ the SQLite3 database. Ensure that this dependency is installed before
 building the utility. 
 
 ```sh
-go get github.com/mattn/go-sqlite3
+go install ./...
 ```
 
 ## Limitations
