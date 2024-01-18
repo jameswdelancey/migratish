@@ -26,9 +26,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Get dependencies
-        run: |
-          go mod tidy
-          go install ./...
+        run: go install ./...
 
       - name: Build
         run: CGO_ENABLED=1 go build -v -o migratish main.go
