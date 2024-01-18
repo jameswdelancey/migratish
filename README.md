@@ -23,11 +23,13 @@ with the required arguments.
 
 ```sh
 # Linux and MacOS
-./migrate -verbose ./db/database.db ./db_migrations/migration.sql
+./migratish -verbose ./db/database.db ./db_migrations/migration.sql
 
 # Windows
 ./migratish.exe -verbose ./db/database.db ./db_migrations/migration.sql
 ```
+
+You can also add the binary to your path.
 
 ## Usage with Compilation
 To use the migration utility, compile the `main.go` file and execute the 
