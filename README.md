@@ -1,25 +1,22 @@
-# SQLite3 Schema Management (AKA Migration) CLI Utility
-For Windows, Linux, or Mac
+# SQLite3 Schema Management (Migration) CLI Utility
+
+## Overview
+
+This repository hosts a straightforward SQLite3 migration CLI utility developed in Go, compatible with Windows, Linux, or Mac environments. Utilizing a single source file `main.go`, the tool efficiently manages database migrations, enabling both forward and reverse migration operations.
 
 [![Go Build and Release](https://github.com/jameswdelancey/migratish/actions/workflows/build.yml/badge.svg)](https://github.com/jameswdelancey/migratish/actions/workflows/build.yml)
 
-## Overview
-This repository contains a simple Go-based SQLite3 migration CLI utility 
-designed to manage database migrations. The utility is implemented in a 
-single source file `main.go` and facilitates applying forward or reverse 
-migrations to a SQLite3 database. 
-
 ## Features
-- Support for forward (f) and reverse (r) migrations.
-- Automated tracking of migration versions through a dedicated table 
-  within the database. 
-- Command-line interface accepting two arguments: the path to the 
-  database file and the path to the migration SQL file. 
+
+- **Migration Direction**: Supports forward (f) and reverse (r) migrations.
+- **Automated Version Tracking**: Automatically tracks migration versions via a dedicated database table.
+- **Simplified CLI Interface**: Accepts two arguments via the command line: the path to the database file and the migration SQL file.
 
 ## Usage
-Download the latest release version of the binary for your platform from
-the **Releases** area of this repository. Use the binary in your project,
-with the required arguments.
+
+### Download Latest Release
+
+Download the latest release binary for your platform from the **Releases** section of this repository. Execute the binary with the required arguments:
 
 ```sh
 # Linux and MacOS
@@ -29,68 +26,61 @@ with the required arguments.
 ./migratish.exe -verbose ./db/database.db ./db_migrations/migration.sql
 ```
 
-You can also add the binary to your path.
+You may also add the binary to your system's PATH for convenience.
 
-## Usage with Compilation
-To use the migration utility, compile the `main.go` file and execute the 
-binary with the required arguments. 
+### Usage with Compilation
+
+To utilize the migration utility, compile the `main.go` file and execute the resulting binary along with the necessary arguments:
 
 ```sh
 go build -o migrate main.go
 ./migrate path/to/database.db path/to/migration.sql
 ```
 
-The migration file name must follow the pattern `[f|r][1-9][0-9]*.sql`, where:
-- `f` indicates a forward migration.
-- `r` indicates a reverse migration.
-- The number sequence (1-10 or higher) represents the migration version. 
+Ensure that your migration files follow the naming convention `[f|r][1-9][0-9]*.sql`, where:
+- `f` denotes a forward migration.
+- `r` denotes a reverse migration.
+- The number sequence (1-10 or higher) indicates the migration version.
 
 ## Migration Files
-Migration files should be named according to the schema `[f|r][1-9][0-9]*.sql`:
-- `f` for forward migrations.
-- `r` for reverse migrations.
-- A sequence number indicating the migration version.
 
-For example:
-- `f1.sql` would be the first forward migration.
-- `r2.sql` would be the reverse migration for version 2 (downgrading from version 2 to 1).
+Migration files should adhere to the schema `[f|r][1-9][0-9]*.sql`, where:
+- `f` represents forward migrations.
+- `r` represents reverse migrations.
+- The number sequence signifies the migration version.
+
+Example:
+- `f1.sql` is the first forward migration.
+- `r2.sql` is the reverse migration for version 2 (downgrading from version 2 to 1).
 
 ## Migration Table
-The utility will automatically create a `migration` table in the SQLite3 
-database if it does not exist. This table tracks the current migration 
-version of the database, containing a datetime column and a version 
-column. 
+
+The utility automatically creates a `migration` table within the SQLite3 database if it doesn't already exist. This table tracks the current migration version, containing datetime and version columns.
 
 ## Assumptions
-- The SQL migration files are correctly formatted and contain valid 
-  SQLite3 SQL statements. 
-- Error checking for SQL statements within the migration files is 
-  minimal. 
-- Migration file names are expected to follow the specified format and 
-  the code does not handle versions higher than 9, though it is written to 
-  support any number above 1. 
+
+- SQL migration files are correctly formatted and contain valid SQLite3 SQL statements.
+- Error checking for SQL statements within migration files is minimal.
+- Migration file names are expected to follow the specified format, and the code does not handle versions higher than 9, although it's designed to support any number above 1.
 
 ## Dependencies
-This utility uses the `mattn/go-sqlite3` package for interacting with 
-the SQLite3 database. Ensure that this dependency is installed before 
-building the utility. 
+
+This utility relies on the `mattn/go-sqlite3` package for SQLite3 database interaction. Ensure this dependency is installed before building the utility:
 
 ```sh
 go install ./...
 ```
 
 ## Limitations
-- The utility assumes the presence of well-formed and valid SQL 
-migration files. 
-- Error handling for SQL execution is not extensive and should be 
-improved for production use. 
-- The utility does not support automated rollback of failed migrations. 
+
+- Assumes the presence of well-formed and valid SQL migration files.
+- Error handling for SQL execution is not extensive and should be enhanced for production use.
+- Does not support automated rollback of failed migrations.
 
 ## Contributing
-Contributions to improve the utility, including error handling, support 
-for more complex migration patterns, and robustness, are welcome. Please 
-submit a pull request or open an issue to discuss proposed changes. 
+
+Contributions to enhance the utility, including improved error handling, support for complex migration patterns, and overall robustness, are encouraged. Feel free to submit pull requests or open issues to discuss proposed changes.
 
 ## License
-This SQLite3 Migration CLI Utility is open-source software licensed 
-under the MIT license. 
+
+This SQLite3 Migration CLI Utility is open-source software licensed under the MIT License.
